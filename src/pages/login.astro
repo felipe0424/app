@@ -1,0 +1,46 @@
+---
+import '../styles/global.css';
+import logo from '../assets/print.svg';
+import background from '../assets/background.svg';
+---
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">
+    <title>Projetos</title>
+  </head>
+
+  <body class=" flex flex-col items-center justify-center h-screen gap-12">
+    <img src={background.src} alt="background" class="absolute top-0 left-0 w-full h-full object-cover -z-1" />
+    <img src={logo.src} alt="icon" class="z-1">
+
+    <div class="flex flex-col items-center justify-center bg-white p-8 gap-3 rounded-lg mx-auto max-w-sm">
+      <h2 class="text-lg font-bold">Área Restrita</h2>
+      <input class="border-2 rounded-lg p-2" type="password" id="password" placeholder="Digite a senha" />
+      <button class="bg-purple-800 p-2 rounded-full text-white  px-10" id="login-button">Acessar</button>
+    </div>
+
+    <!-- <script>
+      function checkPassword() {
+        const passwordInput = document.getElementById('password');
+        const password = passwordInput ? (passwordInput as HTMLInputElement).value : '';
+        if (password === '3658') {
+          sessionStorage.setItem('access_granted', 'true');
+          window.location.href = '/';
+        } else {
+          alert('Senha incorreta! Tente novamente.');
+        }
+      }
+
+      const loginButton = document.getElementById('login-button');
+      if (loginButton) {
+        loginButton.addEventListener('click', checkPassword);
+      }
+    </script> -->
+  </body>
+</html>

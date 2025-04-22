@@ -1,0 +1,27 @@
+---
+const { span } = Astro.props;
+---
+
+<a href="https://api.whatsapp.com/send?phone=5587988674049&amp;text=Ol%C3%A1,%20gostaria%20de%20saber%20mais!." 
+target="_blank" 
+rel="noopener" 
+class="button group flex items-center gap-2 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_#E4D694]/50">
+  <span>{ span }</span>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition-all duration-300">
+    <path 
+      d="M12 22C17.5229 22 22 17.5229 22 12C22 6.47715 17.5229 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5229 6.47715 22 12 22Z" 
+      class="fill-none stroke-[#131941] group-hover:fill-[#131941] group-hover:stroke-[#131941] transition-all duration-900" 
+      stroke-width="2" stroke-linejoin="round"/>
+    
+    <path 
+      d="M15.5 8.5L8.5 15.5" 
+      class="stroke-[#131941] group-hover:stroke-[#FBF9D3] transition-all duration-300" 
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <path 
+      d="M9.5 8.5H15.5V14.5" 
+      class="stroke-[#131941] group-hover:stroke-[#FBF9D3] transition-all duration-300" 
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  
+</a>

@@ -1,0 +1,63 @@
+---
+import { Image } from 'astro:assets';
+import Button from "../components/Button.astro";
+import Logo from "../assets/logo.svg";
+import image1 from '../assets/image1.png';
+import image2 from '../assets/image2.png';
+import image3 from '../assets/image3.png';
+import luz from '../assets/luz.png';
+import object from '../assets/object.svg';
+---
+
+<section id="hero" class="relative flex pt-12 flex-col items-center justify-center h-screen bg-cover bg-center bg-[url('/assets/bg-hero.jpg')] xl:bg-[url('/assets/bg-hero.jpg')] pb-8">
+
+  <!-- <div class="bg-gradient-to-b from-transparent to-black opacity-70"></div> -->
+
+  <div class="flex flex-col items-center justify-center xl:mt-0">
+
+    <div id="images" class="flex items-end justify-center relative">
+
+      <div class="max-w-56 -mr-10 z-10">
+
+        <Image src={image3} alt="Fabiano Moura Nutricionista" max-width={224} height={224} loading="eager" class="max-h-56 opacity-10 transition-opacity duration-300 hover:opacity-100"/>
+        
+      </div>
+      
+      <div class="relative">
+        <img src={luz.src} alt="Fabiano Moura Nutricionista" max-width={224} height={224} loading="eager" class="absolute animate-glow" />
+
+        <img src={image1.src} alt="Fabiano Moura Nutricionista" width={254} max-height={224} loading="eager" class="relative z-20 transition-all duration-500 hover:scale-102 hover:-translate-y-1"/>
+
+        <Image src={object} alt="Fabiano Moura Nutricionista" width={224} height={224} loading="eager" class="absolute animate-pulse2 max-w-16 top-54 -left-20 z-30" />
+
+        <Image src={object} alt="Fabiano Moura Nutricionista" width={224} height={224} loading="eager"  class="absolute animate-pulse3 max-w-12 rotate-38 top-60 left-67 z-30" />
+      </div>
+      
+      <div class="max-w-56 -ml-12 z-10">
+        <Image src={image2} alt="Fabiano Moura Nutricionista" max-width={224} height={224} loading="eager" class="opacity-10 transition-opacity duration-300 hover:opacity-100"/>
+      </div>
+    
+    </div>
+    
+    <div id="logo" class="z-20 h-auto max-w-64 mt-[-5rem]">
+      <Image src={Logo} alt="Logo" loading="eager"/>
+    </div>
+
+    <div id="text" class="flex flex-col gap-2 text-center mx-4 mt-4 xl:mx-80 xl:max-w-lg z-30">
+      <h2 class="font-semibold text-[#E4D694]">Lorem ipsum dolor sit amet consectetur</h2>
+      <p class="text-1xl xl:text-base xl:max-w-xl">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam quam repellat vero non mollitia cum est voluptates.
+      </p>
+    </div>
+
+    <div id="button" class="my-4">
+      <Button span="Lorem ipsum dolor sit" class=""/>
+    </div>
+
+    <div id="slogan" class="text-sm font-thin">
+      <p>Science in Sports Performance</p>
+    </div>
+
+  </div>
+
+</section>

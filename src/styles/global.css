@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@keyframes glow {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(2.10);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(2.15);
+  }
+}
+
+.animate-glow {
+  left: 1.5rem;
+  top: 1rem;
+  animation: glow 3s ease-in-out infinite;
+}
+
+@keyframes pulse2 {
+  0%, 100% {
+    transform: translateY(0rem);
+  }
+  50% {
+    transform: translateY(-0.2rem);
+  }
+}
+
+.animate-pulse2 {
+  animation: pulse2 3s ease-in-out infinite;
+}
+
+@keyframes pulse3 {
+  0%, 100% {
+    transform: translateY(0rem);
+  }
+  50% {
+    transform: translateY(-0.5rem);
+  }
+}
+
+.animate-pulse3 {
+  animation: pulse3 3s ease-in-out infinite;
+}
+
+.button {
+  color: #131941;
+  display: flex;
+  font-weight: 600;
+  width: 253px;
+  min-width: 120px;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 0.5rem;
+  background: var(--_gradient4, linear-gradient(90deg, #EEE5A6 -10%, #A58D52 20%, #EBDAA2 64%, #FEFFDC 100%));
+}
