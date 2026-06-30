@@ -69,6 +69,28 @@ const accordionItems = [
 
 <Layout title="Fabiano Moura | Excelência Nutricional">
   <main class="home-page text-text bg-background w-full max-w-full box-border justify-center items-center overflow-hidden">
+    <header class="site-header" data-site-header>
+      <a href="#inicio" class="brand-link" aria-label="Fabiano Moura Excelência Nutricional">
+        <Image src={logoPrincipal} alt="Fabiano Moura Excelência Nutricional" loading="eager" class="brand-logo" />
+      </a>
+
+      <nav class="site-nav" aria-label="Navegação principal">
+        {menuItems.map((item) => (
+          <a href={`#${item.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')}`}>
+            {item}
+          </a>
+        ))}
+      </nav>
+
+      <a
+        href="/login"
+        class="private-access"
+      >
+        <span>Acesso Exclusivo</span>
+        <Image src={fire} alt="" width={24} height={24} loading="eager" class="private-icon" />
+      </a>
+    </header>
+
     <section id="inicio" class="hero-shell">
       <Image
         src={bgHero}
@@ -76,28 +98,6 @@ const accordionItems = [
         loading="eager"
         class="hero-bg"
       />
-
-      <header class="site-header">
-        <a href="#inicio" class="brand-link" aria-label="Fabiano Moura Excelência Nutricional">
-          <Image src={logoPrincipal} alt="Fabiano Moura Excelência Nutricional" loading="eager" class="brand-logo" />
-        </a>
-
-        <nav class="site-nav" aria-label="Navegação principal">
-          {menuItems.map((item) => (
-            <a href={`#${item.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')}`}>
-              {item}
-            </a>
-          ))}
-        </nav>
-
-        <a
-          href="/login"
-          class="private-access"
-        >
-          <span>Acesso Exclusivo</span>
-          <Image src={fire} alt="" width={24} height={24} loading="eager" class="private-icon" />
-        </a>
-      </header>
 
       <div class="hero-content">
         <div class="hero-copy">
@@ -313,6 +313,22 @@ const accordionItems = [
   </main>
 </Layout>
 
+<script>
+  const siteHeader = document.querySelector('[data-site-header]');
+  const heroSection = document.querySelector('#inicio');
+
+  if (siteHeader && heroSection) {
+    const updateFloatingHeader = () => {
+      const heroEnd = heroSection.offsetTop + heroSection.offsetHeight;
+      siteHeader.classList.toggle('is-floating', window.scrollY >= heroEnd - 2);
+    };
+
+    updateFloatingHeader();
+    window.addEventListener('scroll', updateFloatingHeader, { passive: true });
+    window.addEventListener('resize', updateFloatingHeader);
+  }
+</script>
+
 <style>
   .home-page {
     --page-max: 1380px;
@@ -327,6 +343,7 @@ const accordionItems = [
     justify-content: flex-start;
     min-height: 100vh;
     overflow-x: hidden;
+    overflow-y: visible;
     background: #00183e;
     color: #e4d694;
     font-family: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -367,12 +384,48 @@ const accordionItems = [
     left: 0;
     z-index: 40;
     display: grid;
+    box-sizing: border-box;
     grid-template-columns: minmax(220px, 350px) minmax(460px, 1fr) minmax(172px, 210px);
     align-items: center;
     gap: clamp(20px, 2.3vw, 32px);
     width: min(calc(100% - (var(--page-gutter) * 2)), var(--page-max));
     margin: 0 auto;
     padding: clamp(22px, 2.6vw, 34px) 0 0;
+    transition:
+      top 180ms ease,
+      width 180ms ease,
+      padding 180ms ease,
+      background-color 180ms ease,
+      border-color 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .site-header.is-floating {
+    position: fixed;
+    top: 14px;
+    z-index: 1000;
+    width: min(calc(100% - (var(--page-gutter) * 2)), 1240px);
+    padding: 10px 16px;
+    background: rgba(0, 24, 62, 0.88);
+    border: 1px solid rgba(228, 214, 148, 0.22);
+    border-radius: 12px;
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(14px);
+  }
+
+  .site-header.is-floating .brand-link {
+    max-width: 285px;
+  }
+
+  .site-header.is-floating .site-nav {
+    gap: clamp(18px, 1.6vw, 28px);
+    font-size: 0.88rem;
+  }
+
+  .site-header.is-floating .private-access {
+    min-width: 172px;
+    min-height: 36px;
+    font-size: 0.82rem;
   }
 
   .brand-link,
@@ -1185,10 +1238,26 @@ const accordionItems = [
 
   @media (max-width: 1180px) {
     .site-header {
-      position: relative;
+      position: absolute;
+      right: 0;
+      left: 0;
       display: flex;
       width: auto;
+      margin: 0;
       padding: 22px 22px 0;
+    }
+
+    .site-header.is-floating {
+      position: absolute;
+      top: auto;
+      width: auto;
+      margin: 0;
+      padding: 22px 22px 0;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+      backdrop-filter: none;
     }
 
     .brand-link {
